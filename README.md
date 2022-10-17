@@ -1,5 +1,5 @@
 # proyecto22
-Proyecto de la asignatura Procesos de Ingeniería del Software curso 22-23 Escuela Superior de Ingeniería Informática de Albacete - Universidad de Castilla-La Mancha
+Proyecto de la asignatura de Procesos de Ingeniería del Software de las Escuela Superior de Ingeniería Informática de Albacete - Universidad de Castilla-La Mancha realizado durante el curso 22-23 
 
 ## Descripción
 Este repositorio contiene la arquitectura base de una solución software estilo SaaS (Software as a Service) de una aplicación genérica que implementa la siguiente funcionalidad:
