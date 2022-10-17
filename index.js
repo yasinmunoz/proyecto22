@@ -57,7 +57,7 @@ app.get("/obtenerPartidas", function(req, res){
 
 app.get("/obtenerPartidasDisponibles", function(req, res){    
    
-    let lista = juego.obtenerPartidasDisponibles(); 
+    let response = juego.obtenerPartidasDisponibles(); 
 
     res.send ( response );
 });
