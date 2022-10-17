@@ -1,7 +1,9 @@
 function ControlWeb() {
 
     this.mostrarAgregarUsuario = function () {
+
         let cadena = '<div class="row" id="mAU">';//'<form class="form-row needs-validation"  id="mAJ">';
+
         cadena = cadena + "<div class='col'>";
         cadena = cadena + '<div class="row"><div class="col"><h2>El juego indefinido</h2></div></div>';
         cadena = cadena + '<div class="row">';
@@ -29,8 +31,8 @@ function ControlWeb() {
                 rest.agregarUsuario(nick);
                 //mostrar gif
             }
-        });
-    }
+        })
+    };
 
     this.mostrarHome = function () {
         $('#mH').remove();
@@ -41,7 +43,7 @@ function ControlWeb() {
         cadena = cadena + "</div></div>";
         $('#agregarUsuario').append(cadena);
         this.mostrarCrearPartida();
-    }
+    };
 
     this.mostrarCrearPartida = function () {
         $('#mCP').remove();
@@ -53,14 +55,15 @@ function ControlWeb() {
         $('#crearPartida').append(cadena);
         $("#btnCP").on("click", function (e) {
             $("#mCP").remove();
+            $('#mLP').remove();
             rest.crearPartida();
         });
-    }
+    };
 
     this.mostrarCodigo = function (codigo) {
         let cadena = "Código de la partida: " + codigo;
         $('#codigo').append(cadena);
-    }
+    };
 
     this.mostrarListaDePartidas = function (lista) {
         $('#mLP').remove();
@@ -72,7 +75,8 @@ function ControlWeb() {
         cadena = cadena + "</ul>";
         cadena = cadena + "</div>"
         $('#listaPartidas').append(cadena);
-    }
+
+    };
 
     this.mostrarListaDePartidasDisponibles = function (lista) {
         $('#mLP').remove();
@@ -96,5 +100,5 @@ function ControlWeb() {
                 rest.unirseAPartida(codigo);
             }
         });
-    }
+    };
 }
