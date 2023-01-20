@@ -1,7 +1,7 @@
 const fs = require("fs");
 const express = require('express');
 const app = express();
-const modelo = require("./servidor/modelo.js");
+const modelo = require("./server/modelo.js");
 
 const PORT = process.env.PORT || 3000;
 
@@ -10,7 +10,7 @@ let juego = new modelo.Juego();
 app.use(express.static(__dirname + "/"));
 
 app.get("/", function (request, response) {
-    var contenido = fs.readFileSync(__dirname + "/cliente/index.html");
+    var contenido = fs.readFileSync(__dirname + "/client/index.html");
     response.setHeader("Content-type", "text/html");
     response.send(contenido);
 });

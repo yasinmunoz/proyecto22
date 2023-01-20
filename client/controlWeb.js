@@ -12,17 +12,19 @@ function ControlWeb() {
 
     this.mostrarAgregarUsuario = function () {
 
-        let cadena = '<div class="row" id="mAU">';//'<form class="form-row needs-validation"  id="mAJ">';
+        let cadena = '<div class="row" id="mAU">';
 
-        cadena = cadena + "<div class='col'>";
-        cadena = cadena + '<div class="row"><div class="col"><h2>El juego indefinido</h2></div></div>';
+        cadena = cadena + "<div class='col-6'>";
+        cadena = cadena + '<div class="row"><div class="col"><h2>¡Comienza a jugar!</h2></div></div>';
         cadena = cadena + '<div class="row">';
         cadena = cadena + '<div class="col">'
-        cadena = cadena + '<input type="text" class="form-control mb-2 mr-sm-2" id="usr" placeholder="Introduce tu nick (max 6 letras)" required></div>';
+        cadena = cadena + '<input type="text" class="form-control mb-2 mr-sm-2" id="usr" placeholder="Introduce tu nick (max 6 letras)" required></div></div>';
+        cadena = cadena + '<div class="row">';
         cadena = cadena + '<div class="col">';
-        cadena = cadena + '<button id="btnAU" class="btn btn-primary mb-2 mr-sm-2">Iniciar sesión</button>';
-        //cadena=cadena+'<a href="/auth/google" class="btn btn-primary mb-2 mr-sm-2">Accede con Google</a>';
-        cadena = cadena + '</div>'; //' </form>';
+        cadena = cadena + '<button id="btnAU" class="btn btn-primary mr-sm-2">Iniciar sesión</button></div></div>';
+        cadena = cadena + '<hr/>';
+        cadena = cadena + '<a href="/auth/google" class="btn btn-danger mb-2 mr-sm-2">Accede con Google</a>';
+        cadena = cadena + '</div>';
         cadena = cadena + '<div id="nota"></div>';
         cadena = cadena + '</div></div></div>';
 

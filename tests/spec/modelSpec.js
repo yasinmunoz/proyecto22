@@ -2,7 +2,7 @@ describe("El juego... ", function () {
 
   var miJuego;
   var usr1, usr2;
-  
+
   // Se ejecuta antes de cada test 
   beforeEach(function () {
     miJuego = new Juego();
@@ -28,14 +28,14 @@ describe("El juego... ", function () {
     expect(miJuego.partidas[codigo]).toBeDefined();
 
     let partida = miJuego.partidas[codigo];
-    
+
     expect(partida.owner.nick).toEqual(usr1.nick);
     expect(partida.jugadores[0].nick).toEqual(usr1.nick);
     expect(partida.codigo).toEqual(codigo);
   });
 
-  xit ("el usuario luis se une a la partida", function (){
+  xit("el usuario luis se une a la partida", function () {
 
   });
-  
+
 });

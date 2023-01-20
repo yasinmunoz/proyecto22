@@ -18,7 +18,7 @@ function ClienteRest() {
                 iu.mostrarHome();//iu.mostrarHome(data.nick)
             }
             else {
-                console.log("No se ha podido registrar el usuario");                
+                console.log("No se ha podido registrar el usuario");
                 iu.mostrarModal("El nick ya está en uso");
                 iu.mostrarAgregarUsuario();
             }
