@@ -106,7 +106,7 @@ function ClienteRest() {
 
 
     this.usuarioSale = function () {
-
+        
         let nick = this.nick;
 
         $.getJSON("/salir/" + nick, function (data) {

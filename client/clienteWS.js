@@ -84,7 +84,6 @@ function ClienteWS() {
             }
             else {
                 console.log("No se ha podido unir a partida.");
-
             }
         });
 
@@ -131,7 +130,7 @@ function ClienteWS() {
 
         this.socket.on("aJugar", function () {
 
-            iu.mostrarModal("A jugaaar!");
+            iu.mostrarModal("¡Que empiece la batalla!");
         });
 
 
@@ -186,7 +185,7 @@ function ClienteWS() {
 
 
         this.socket.on("finalPartida", function (res) {
-            iu.mostrarModal('¡ ' + res + ' ha ganado la partida!');
+            iu.mostrarModal('¡' + res + ' ha ganado la partida!');
             iu.finalPartida();
         });
     }

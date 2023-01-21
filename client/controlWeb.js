@@ -37,7 +37,7 @@ function ControlWeb() {
 
             if ($('#usr').val() === '' || $('#usr').val().length > 6) {
                 e.preventDefault();
-                $('#nota').append('Nick inválido.');
+                $('#nota').append('Nick inválido');
             }
             else {
                 var nick = $('#usr').val();
@@ -110,6 +110,7 @@ function ControlWeb() {
         $('#codigo').append(cadena);
 
         $("#btnAbP").on("click", function (e) {
+            
             cws.abandonarPartida();
         });
     };
@@ -148,7 +149,7 @@ function ControlWeb() {
         $('#mLP').remove();
 
         let cadena = "<div class='row' id='mLP'>";
-        
+
         cadena = cadena + "<div class='col'>";
         cadena = cadena + "<h3>Lista de partidas disponibles</h3>";
         cadena = cadena + '<ul class="list-group">';

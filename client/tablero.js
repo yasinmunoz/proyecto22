@@ -7,15 +7,11 @@ function Tablero(size) {
 
     this.mostrarTablero = function (si) {
 
-        console.log("Entro a mostrar tablero.");
+        console.log("Entro a mostrar tablero");
         let x = document.getElementById("tablero");
 
-        if (si) {
-            x.style.display = "block";
-        }
-        else {
-            x.style.display = "none";
-        }
+        if (si) x.style.display = "block";
+        else x.style.display = "none";
     };
 
 
@@ -26,8 +22,6 @@ function Tablero(size) {
         for (var k = 0; k < humanCells.length; k++) {
             humanCells[k].self = this;
             humanCells[k].addEventListener('click', this.placementListener, false);
-            //humanCells[k].addEventListener('mouseover', this.placementMouseover, false);
-            //humanCells[k].addEventListener('mouseout', this.placementMouseout, false);
         }
 
         var computerCells = document.querySelector('.computer-player').childNodes;
@@ -42,6 +36,7 @@ function Tablero(size) {
     this.asignarFlotaListener = function () {
 
         var playerRoster = document.querySelector('.fleet-roster').querySelectorAll('li');
+
         for (var i = 0; i < playerRoster.length; i++) {
             playerRoster[i].self = this;
             playerRoster[i].addEventListener('click', this.rosterListener, false);
@@ -52,8 +47,8 @@ function Tablero(size) {
     this.placementListener = function (e) {
 
         self = e.target.self;
+
         if (self.placingOnGrid) {
-            // Extract coordinates from event listener
             var x = parseInt(e.target.getAttribute('data-x'), 10);
             var y = parseInt(e.target.getAttribute('data-y'), 10);
 
@@ -74,8 +69,8 @@ function Tablero(size) {
         var self = e.target.self;
         var cli = this;
 
-        // Remove all classes of 'placing' from the fleet roster first
         var roster = document.querySelectorAll('.fleet-roster li');
+
         for (var i = 0; i < roster.length; i++) {
             var classes = roster[i].getAttribute('class') || '';
             classes = classes.replace('placing', '');
@@ -85,7 +80,6 @@ function Tablero(size) {
         // Set the class of the target ship to 'placing'
         self.nombreBarco = e.target.getAttribute('id');
         document.getElementById(self.nombreBarco).setAttribute('class', 'placing');
-
         self.placingOnGrid = true;
     };
 
@@ -112,6 +106,7 @@ function Tablero(size) {
         var x = parseInt(e.target.getAttribute('data-x'), 10);
         var y = parseInt(e.target.getAttribute('data-y'), 10);
         console.log("disparo x: " + x + " y: " + y);
+
         cws.disparar(x, y);
     };
 
@@ -127,16 +122,18 @@ function Tablero(size) {
 
     this.crearGrid = function () {
 
-        console.log("Entro en crear grid")
+        console.log("Entro en crear grid");
         var gridDiv = document.querySelectorAll('.grid');
 
         for (var grid = 0; grid < gridDiv.length; grid++) {
-            //gridDiv[grid].removeChild(gridDiv[grid].querySelector('.no-js')); // Removes the no-js warning
             let myNode = gridDiv[grid];
+
             while (myNode.lastElementChild) {
                 myNode.removeChild(myNode.lastElementChild);
             }
-            console.log(this.size)
+
+            console.log(this.size);
+
             for (var i = 0; i < this.size; i++) {
                 for (var j = 0; j < this.size; j++) {
                     var el = document.createElement('div');
@@ -147,21 +144,20 @@ function Tablero(size) {
                 }
             }
         }
-
         this.ini();
     };
 
 
     this.elementosGrid = function () {
 
-        console.log("Entro en elementos grid.");
+        console.log("Entro en elementos grid");
         $('#gc').remove();
 
         let cadena = '<div class="game-container" id="gc">';
         cadena = cadena + '<div id="roster-sidebar">';
         cadena = cadena + '<h4>Barcos</h4><div id="flota"></div></div><div class="grid-container"><h2>Tu flota</h2>';
         cadena = cadena + '<div class="grid human-player"></div></div><div class="grid-container">';
-        cadena = cadena + '<h2>Flota enemiga</h2><div class="grid computer-player"></div></div>'
+        cadena = cadena + '<h2>Flota enemiga</h2><div class="grid computer-player"></div></div>';
         cadena = cadena + '<div></div></div>';
 
         $('#tablero').append(cadena);
@@ -170,16 +166,15 @@ function Tablero(size) {
 
 
     this.mostrarFlota = function () {
-        $("#listaF").remove();
 
+        $("#listaF").remove();
         let cadena = '<ul class="fleet-roster" id="listaF">';
 
         for (let key in this.flota) {
-            cadena = cadena + "<li id='" + key + "'>" + key + "</li>"
+            cadena = cadena + "<li id='" + key + "'>" + key + "</li>";
         }
 
         cadena = cadena + "</ul>";
-
         $('#flota').append(cadena);
 
         this.asignarFlotaListener();
