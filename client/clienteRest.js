@@ -27,8 +27,6 @@ function ClienteRest() {
 
     this.comprobarUsuario = function () {
 
-        let cli = this;
-
         $.getJSON("/comprobarUsuario/" + this.nick, function (data) {
 
             if (data.nick != -1) {
@@ -83,8 +81,6 @@ function ClienteRest() {
 
     this.obtenerListaPartidas = function () {
 
-        let cli = this;
-
         $.getJSON("/obtenerPartidas", function (lista) {
 
             console.log(lista);
@@ -95,8 +91,6 @@ function ClienteRest() {
 
     this.obtenerListaPartidasDisponibles = function () {
 
-        let cli = this;
-
         $.getJSON("/obtenerPartidasDisponibles", function (lista) {
 
             console.log(lista);
@@ -106,7 +100,7 @@ function ClienteRest() {
 
 
     this.usuarioSale = function () {
-        
+
         let nick = this.nick;
 
         $.getJSON("/salir/" + nick, function (data) {
@@ -117,4 +111,3 @@ function ClienteRest() {
         });
     }
 }
-

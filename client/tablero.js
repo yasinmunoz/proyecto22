@@ -17,16 +17,16 @@ function Tablero(size) {
 
     this.ini = function () {
 
-        var humanCells = document.querySelector('.human-player').childNodes;
+        let humanCells = document.querySelector('.human-player').childNodes;
 
-        for (var k = 0; k < humanCells.length; k++) {
+        for (let k = 0; k < humanCells.length; k++) {
             humanCells[k].self = this;
             humanCells[k].addEventListener('click', this.placementListener, false);
         }
 
-        var computerCells = document.querySelector('.computer-player').childNodes;
+        let computerCells = document.querySelector('.computer-player').childNodes;
 
-        for (var j = 0; j < computerCells.length; j++) {
+        for (let j = 0; j < computerCells.length; j++) {
             computerCells[j].self = this;
             computerCells[j].addEventListener('click', this.shootListener, false);
         }
@@ -35,9 +35,9 @@ function Tablero(size) {
 
     this.asignarFlotaListener = function () {
 
-        var playerRoster = document.querySelector('.fleet-roster').querySelectorAll('li');
+        let playerRoster = document.querySelector('.fleet-roster').querySelectorAll('li');
 
-        for (var i = 0; i < playerRoster.length; i++) {
+        for (let i = 0; i < playerRoster.length; i++) {
             playerRoster[i].self = this;
             playerRoster[i].addEventListener('click', this.rosterListener, false);
         }
@@ -49,8 +49,8 @@ function Tablero(size) {
         self = e.target.self;
 
         if (self.placingOnGrid) {
-            var x = parseInt(e.target.getAttribute('data-x'), 10);
-            var y = parseInt(e.target.getAttribute('data-y'), 10);
+            let x = parseInt(e.target.getAttribute('data-x'), 10);
+            let y = parseInt(e.target.getAttribute('data-y'), 10);
 
             self.colocarBarco(x, y, self.nombreBarco);
         }
@@ -66,13 +66,13 @@ function Tablero(size) {
 
     this.rosterListener = function (e) {
 
-        var self = e.target.self;
-        var cli = this;
+        let self = e.target.self;
+        let cli = this;
 
-        var roster = document.querySelectorAll('.fleet-roster li');
+        let roster = document.querySelectorAll('.fleet-roster li');
 
-        for (var i = 0; i < roster.length; i++) {
-            var classes = roster[i].getAttribute('class') || '';
+        for (let i = 0; i < roster.length; i++) {
+            let classes = roster[i].getAttribute('class') || '';
             classes = classes.replace('placing', '');
             roster[i].setAttribute('class', classes);
         }
@@ -103,8 +103,8 @@ function Tablero(size) {
 
     this.shootListener = function (e) {
 
-        var x = parseInt(e.target.getAttribute('data-x'), 10);
-        var y = parseInt(e.target.getAttribute('data-y'), 10);
+        let x = parseInt(e.target.getAttribute('data-x'), 10);
+        let y = parseInt(e.target.getAttribute('data-y'), 10);
         console.log("disparo x: " + x + " y: " + y);
 
         cws.disparar(x, y);
@@ -113,9 +113,9 @@ function Tablero(size) {
 
     this.updateCell = function (x, y, type, target) {
 
-        var player = target;
+        let player = target;
 
-        var classes = ['grid-cell', 'grid-cell-' + x + '-' + y, 'grid-' + type];
+        let classes = ['grid-cell', 'grid-cell-' + x + '-' + y, 'grid-' + type];
         document.querySelector('.' + player + ' .grid-cell-' + x + '-' + y).setAttribute('class', classes.join(' '));
     };
 
@@ -123,9 +123,9 @@ function Tablero(size) {
     this.crearGrid = function () {
 
         console.log("Entro en crear grid");
-        var gridDiv = document.querySelectorAll('.grid');
+        let gridDiv = document.querySelectorAll('.grid');
 
-        for (var grid = 0; grid < gridDiv.length; grid++) {
+        for (let grid = 0; grid < gridDiv.length; grid++) {
             let myNode = gridDiv[grid];
 
             while (myNode.lastElementChild) {
@@ -134,9 +134,9 @@ function Tablero(size) {
 
             console.log(this.size);
 
-            for (var i = 0; i < this.size; i++) {
-                for (var j = 0; j < this.size; j++) {
-                    var el = document.createElement('div');
+            for (let i = 0; i < this.size; i++) {
+                for (let j = 0; j < this.size; j++) {
+                    let el = document.createElement('div');
                     el.setAttribute('data-x', j);
                     el.setAttribute('data-y', i);
                     el.setAttribute('class', 'grid-cell grid-cell-' + j + '-' + i);

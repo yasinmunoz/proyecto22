@@ -1,4 +1,4 @@
-let cad = require('./cad.js');
+const cad = require('./cad.js');
 
 function Juego(test) {
 
@@ -17,7 +17,7 @@ function Juego(test) {
 
 			this.insertarLog({ "operacion": "inicioSesion", "usuario": nick, "fecha": Date() }, function () {
 
-				console.log("Registro de log(iniciar sesion) insertado");
+				console.log("Registro de log de iniciar sesion insertado correctamente.");
 			});
 
 			res = { "nick": nick };
@@ -42,7 +42,7 @@ function Juego(test) {
 
 			this.insertarLog({ "operacion": "finSesion", "usuario": nick, "fecha": Date() }, function () {
 
-				console.log("Registro de log(salir) insertado");
+				console.log("Registro de log de salir insertado correctamente.");
 			});
 
 			if (codigo) return codigo;
@@ -90,7 +90,7 @@ function Juego(test) {
 
 		this.insertarLog({ "operacion": "crearPartida", "propietario": usr.nick, "codigo": codigo, "fecha": Date() }, function () {
 
-			console.log("Registro de log(crear partida) insertado");
+			console.log("Registro de log de crear partida insertado correctamente.");
 		});
 
 		this.partidas[codigo] = new Partida(codigo, usr);
@@ -107,11 +107,11 @@ function Juego(test) {
 
 			this.insertarLog({ "operacion": "unirsePartida", "usuario": usr.nick, "codigoPartida": codigo, "fecha": Date() }, function () {
 
-				console.log("Registro de log de unirse a partida insertado");
+				console.log("Registro de log de unirse a partida insertado correctamente.");
 			});
 		}
 		else {
-			console.log("La partida no existe");
+			console.log("La partida no existe.");
 		}
 
 		return res;
@@ -149,8 +149,8 @@ function Juego(test) {
 		for (let key in this.partidas) {
 			if ((this.partidas[key].fase == "inicial" || this.partidas[key].fase == "desplegando") && this.partidas[key].estoy(nick)) {
 				this.partidas[key].fase = "final";
-				return this.partidas[key].codigo;
 
+				return this.partidas[key].codigo;
 			}
 		}
 	};
@@ -163,22 +163,21 @@ function Juego(test) {
 
 
 	this.obtenerLogs = function (callback) {
+
 		this.cad.obtenerLogs(callback);
 	};
 
 
 	this.insertarLog = function (log, callback) {
 
-		if (this.test == 'false') {
-			this.cad.insertarLog(log, callback)
-		}
+		if (this.test == 'false') this.cad.insertarLog(log, callback);
 	};
 
 
 	if (test == 'false') {
 
-		this.cad.conectar(function (db) {
-			console.log("Conectandose a Atlas")
+		this.cad.conectar(function () {
+			console.log("Conectandose a Atlas.");
 		});
 	}
 }
@@ -230,7 +229,7 @@ function Usuario(nick, juego) {
 			let barco = this.flota[nombre];
 
 			this.tableroPropio.colocarBarco(barco, x, y);
-			console.log("El usuario", this.nick, "coloca el barco", barco.nombre, "en el punto ", x, y);
+			console.log("El usuario", this.nick, "coloca el barco", barco.nombre, "en la casilla (", x, ",", y, ")");
 			return barco;
 		}
 	};
@@ -314,7 +313,8 @@ function Usuario(nick, juego) {
 	this.logAbandonarPartida = function (jugador, codigo) {
 
 		this.juego.insertarLog({ "operacion": "abandonarPartida", "usuario": jugador.nick, "codigo": codigo, "fecha": Date() }, function () {
-			console.log("Registro de log de abandonar partida insertado");
+
+			console.log("Registro de log de abandonar partida insertado correctamente.");
 		});
 	};
 
@@ -322,7 +322,8 @@ function Usuario(nick, juego) {
 	this.logFinalizarPartida = function (perdedor, ganador, codigo) {
 
 		this.juego.insertarLog({ "operacion": "finalizarPartida", "perdedor": perdedor, "ganador": ganador, "codigo": codigo, "fecha": Date() }, function () {
-			console.log("Registro de log de finalizarPartida insertado");
+
+			console.log("Registro de log de finalizar partida insertado correctamente");
 		});
 	};
 }
@@ -473,7 +474,7 @@ function Partida(codigo, usr) {
 			atacante.marcarEstado(estado, x, y);
 
 			this.comprobarFin(atacado);
-			console.log(atacante.nick + ' dispara a ' + atacado.nick + ' en la casilla ' + x, y);
+			console.log(atacante.nick + " dispara a " + atacado.nick + "en la casilla (", x, ",", y, ")");
 
 			return estado;
 		}
@@ -590,6 +591,11 @@ function Tablero(size) {
 
 	this.ponerAgua = function (x, y) {
 		return this.casillas[x][y].contiene = new Agua();
+	};
+
+
+	this.esTablero = function () {
+		return true;
 	};
 
 

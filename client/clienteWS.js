@@ -1,8 +1,7 @@
 function ClienteWS() {
 
     this.socket;
-
-    //Peticion de conexion
+    
     this.conectar = function () {
 
         this.socket = io();

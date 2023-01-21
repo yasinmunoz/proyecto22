@@ -1,4 +1,4 @@
-var mongo = require("mongodb").MongoClient;
+const mongo = require("mongodb").MongoClient;
 
 function Cad() {
 
@@ -21,10 +21,10 @@ function Cad() {
         coleccion.insertOne(elemento, function (err, res) {
 
             if (err) {
-                console.log("error");
+                console.log("Error al insertar.");
             }
             else {
-                console.log("Nuevo elemento creado");
+                console.log("Nuevo elemento insertado.");
                 callback(elemento);
             }
         });
@@ -50,17 +50,17 @@ function Cad() {
                 console.log("Conectado a MongoDB Atlas");
                 database.db("batalla").collection("logs", function (err, col) {
                     if (err) {
-                        console.log("No se puede obtener la coleccion");
+                        console.log("No se puede obtener la coleccion de logs.");
                     }
                     else {
-                        console.log("Tenemos la colección de logs");
+                        console.log("Tenemos la colección de logs.");
                         cad.logs = col;
                     }
                 });
 
             }
             else {
-                console.log("No se puedo conectar con MongoDB Atlas");
+                console.log("No se puedo conectar con MongoDB Atlas.");
             }
         })
     };
