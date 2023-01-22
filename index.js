@@ -55,22 +55,28 @@ app.get('/google/callback', passport.authenticate('google', { failureRedirect: '
     res.redirect('/good');
 });
 
-app.get('/auth/twitter', passport.authenticate('twitter'));
-app.get('/auth/twitter/callback', passport.authenticate('twitter', { failureRedirect: '/auth/error' }), function (req, res) {
-    res.redirect('/good');
-});
-
-app.get('/auth/facebook',
-    passport.authenticate('facebook'));
+app.get('/auth/facebook', passport.authenticate('facebook', {
+    scope: ['public_profile', 'email']
+}));
 
 app.get('/auth/facebook/callback',
     passport.authenticate('facebook', { failureRedirect: '/login' }), function (req, res) {
         // Successful authentication, redirect home.
-        res.redirect('/good');
+        res.redirect('/goodFacebook');
     });
 
 app.get("/good", function (request, response) {
+    console.log(request.user);
     let nick = request.user.emails[0].value;
+    if (nick) {
+        juego.agregarUsuario(nick);
+    }
+    response.cookie('nick', nick);
+    response.redirect('/');
+});
+
+app.get("/goodFacebook", function (request, response) {
+    let nick = request.user.displayName;
     if (nick) {
         juego.agregarUsuario(nick);
     }
