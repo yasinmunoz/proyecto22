@@ -21,7 +21,7 @@ context('Casos de Prueba e2e iniciar sesión', () => {
         
         // Pulsa iniciar sesión
         cy.get('#btnAU').click();
-        cy.wait(1000);
+        cy.wait(3000);
 
         // Salimos para borrar la cookie
         cy.get('#btnS').click();
@@ -31,11 +31,14 @@ context('Casos de Prueba e2e iniciar sesión', () => {
     it('Iniciar sesión con google', () => {
 
         // Existe un botón de acceder con google
-        cy.get('a').should('have.text', 'Accede con Google').should('exist');
-        cy.get('a').click();
+        cy.get('#btnGo').should('have.text', 'Accede con Google').should('exist');
+        cy.get('#btnGo').click();
+        cy.wait(1000);
         cy.origin('https://accounts.google.com', () => {
             cy.get('input[type="email"]').type('yasincna@gmail.com');
+            cy.wait(1000);
             cy.get('button').click({ multiple: true, force: true });            
+            cy.wait(1000);
         });
     });
 
@@ -56,6 +59,7 @@ context('Casos de Prueba e2e Partidas', () => {
 
         // Escribe el nick el nick e inicia sesión
         cy.get('input').type('pepe');
+        cy.wait(3000);
         cy.get('#btnAU').click();
     });
 
@@ -66,9 +70,11 @@ context('Casos de Prueba e2e Partidas', () => {
 
         // Salimos para borrar la cookie
         cy.get('#btnS').click();
+        cy.wait(3000);
 
         // Se cierra el modal
         cy.contains('Cerrar').click();
+        cy.wait(3000);
     });
 
     it('Unirse partida', () => {
@@ -78,9 +84,11 @@ context('Casos de Prueba e2e Partidas', () => {
 
         // Salimos para borrar la cookie
         cy.get('#btnS').click();
-
+        cy.wait(3000);
+        
         // Se cierra el modal
         cy.contains('Cerrar').click();
+        cy.wait(5000);
     });
 
 

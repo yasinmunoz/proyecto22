@@ -15,22 +15,26 @@ function ControlWeb() {
 
     this.mostrarAgregarUsuario = function () {
 
-        let cadena = '<div class="row" id="mAU">';
+        let cadena = '<div class="row mt-4" id="mAU">';
 
-        cadena = cadena + "<div class='col-6'>";
+        cadena = cadena + "<div class='col'>";
         cadena = cadena + '<div class="row"><div class="col"><h2>¡Comienza a jugar!</h2></div></div>';
         cadena = cadena + '<div class="row">';
         cadena = cadena + '<div class="col">'
-        cadena = cadena + '<input type="text" class="form-control mb-2 mr-sm-2" id="usr" placeholder="Introduce tu nick (max 6 letras)" required></div></div>';
+        cadena = cadena + '<input type="text" class="form-control mr-sm-2" id="usr" placeholder="Introduce tu nick (max 6 letras)" required></div></div>';
         cadena = cadena + '<div class="row">';
-        cadena = cadena + '<div class="col">';
+        cadena = cadena + '<div class="col text-center">';
         cadena = cadena + '<button id="btnAU" class="btn btn-info mr-sm-2">Iniciar sesión</button></div></div>';
         cadena = cadena + '<hr/>';
-        cadena = cadena + '<a href="/auth/google" class="btn btn-danger mb-2 mr-sm-2">Accede con Google</a>';
+        cadena = cadena + '<a id="btnGo" href="/auth/google" class="btn btn-danger mb-2 mr-sm-2">Accede con Google</a>';
         cadena = cadena + '<a href="/auth/facebook" class="btn btn-primary mb-2 mr-sm-2">Accede con Facebook</a>';
+        cadena = cadena + '<hr />';
+        cadena = cadena + '<div class="row">';
+        cadena = cadena + '<div class="col text-center">';
+        cadena = cadena + '<span>By Yasín Muñoz</span></div></div>';
         cadena = cadena + '</div>';
         cadena = cadena + '<div id="nota"></div>';
-        cadena = cadena + '</div></div></div>';
+        cadena = cadena + '</div>';
 
         $("#agregarUsuario").append(cadena);
 
