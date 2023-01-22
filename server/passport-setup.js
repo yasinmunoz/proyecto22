@@ -1,6 +1,5 @@
 const passport = require("passport");
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
-const TwitterStrategy = require('passport-twitter').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 
 passport.serializeUser(function (user, done) {
@@ -32,7 +31,7 @@ passport.use(new FacebookStrategy({
     callbackURL: "http://localhost:3000/auth/facebook/callback",
 },
     function (accessToken, refreshToken, profile, done) {
-        
+
         return done(null, profile);
     }
 ));
