@@ -243,7 +243,7 @@ function Usuario(nick, juego) {
 
 	this.todosDesplegados = function () {
 
-		for (var key in this.flota) {
+		for (let key in this.flota) {
 			if (!this.flota[key].desplegado) return false;
 		}
 		return true;
@@ -284,7 +284,7 @@ function Usuario(nick, juego) {
 
 	this.flotaHundida = function () {
 
-		for (var key in this.flota) {
+		for (let key in this.flota) {
 			if (this.flota[key].estado != "hundido") return false;
 		}
 		return true;

@@ -40,7 +40,7 @@ function ControlWeb() {
                 $('#nota').append('Nick inválido');
             }
             else {
-                var nick = $('#usr').val();
+                let nick = $('#usr').val();
                 $("#mAU").remove();
                 $("#aviso").remove();
                 rest.agregarUsuario(nick);

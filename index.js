@@ -13,16 +13,15 @@ const io = new Server(server);
 
 // Passport
 const passport = require("passport");
+require("./server/passport-setup.js");
 
 // cookie-session
 const cookieSession = require("cookie-session");
 
 const modelo = require("./server/modelo.js");
 const sWS = require("./server/servidorWS.js");
-const passportSetup = require("./server/passport-setup.js");
 
-var args = process.argv.slice(2);
-
+let args = process.argv.slice(2);
 let juego = new modelo.Juego(args[0]);
 let servidorWS = new sWS.ServidorWS();
 
@@ -42,7 +41,7 @@ app.use(passport.session());
 
 
 app.get("/", function (request, response) {
-    var contenido = fs.readFileSync(__dirname + "/client/index.html");
+    let contenido = fs.readFileSync(__dirname + "/client/index.html");
     response.setHeader("Content-type", "text/html");
     response.send(contenido);
 });
@@ -55,7 +54,7 @@ app.get('/google/callback', passport.authenticate('google', { failureRedirect: '
 });
 
 app.get("/good", function (request, response) {
-    var nick = request.user.emails[0].value;
+    let nick = request.user.emails[0].value;
     if (nick) {
         juego.agregarUsuario(nick);
     }
