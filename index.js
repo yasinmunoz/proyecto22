@@ -46,12 +46,28 @@ app.get("/", function (request, response) {
     response.send(contenido);
 });
 
+app.get('/auth/error', (req, res) => res.send('Error desconocido.'));
+
 app.get("/auth/google", passport.authenticate('google', { scope: ['profile', 'email'] }));
 
 app.get('/google/callback', passport.authenticate('google', { failureRedirect: '/fallo' }), function (req, res) {
     // Successful authentication, redirect home.
     res.redirect('/good');
 });
+
+app.get('/auth/twitter', passport.authenticate('twitter'));
+app.get('/auth/twitter/callback', passport.authenticate('twitter', { failureRedirect: '/auth/error' }), function (req, res) {
+    res.redirect('/good');
+});
+
+app.get('/auth/facebook',
+    passport.authenticate('facebook'));
+
+app.get('/auth/facebook/callback',
+    passport.authenticate('facebook', { failureRedirect: '/login' }), function (req, res) {
+        // Successful authentication, redirect home.
+        res.redirect('/good');
+    });
 
 app.get("/good", function (request, response) {
     let nick = request.user.emails[0].value;

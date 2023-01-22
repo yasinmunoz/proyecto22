@@ -27,6 +27,7 @@ function ControlWeb() {
         cadena = cadena + '<button id="btnAU" class="btn btn-primary mr-sm-2">Iniciar sesión</button></div></div>';
         cadena = cadena + '<hr/>';
         cadena = cadena + '<a href="/auth/google" class="btn btn-danger mb-2 mr-sm-2">Accede con Google</a>';
+        cadena = cadena + '<a href="/auth/facebook" class="btn btn-primary mb-2 mr-sm-2">Accede con Facebook</a>';
         cadena = cadena + '</div>';
         cadena = cadena + '<div id="nota"></div>';
         cadena = cadena + '</div></div></div>';
@@ -55,10 +56,9 @@ function ControlWeb() {
         $('#gc').remove();
 
         let cadena = '<div class="row" id="mH">';
-        cadena = cadena + '<div class="col" ><h2>Batalla Naval</h2></div>';
-        cadena = cadena + "<div><h3> Bienvenido " + rest.nick + "     " + "</h3></div>"
+        cadena = cadena + '<div class="col" ><h2>Bienvenido ' + rest.nick + '     ' + '</h2></div>';
         cadena = cadena + '<div style="margin-bottom:15px" id="codigo"></div>'
-        cadena = cadena + '<button id="btnS" class="btn btn-primary mb-2 mr-sm-2">Salir</button>';
+        cadena = cadena + '<button id="btnS" class="btn btn-danger">Salir</button>';
         cadena = cadena + '</div>'
 
 
@@ -110,7 +110,7 @@ function ControlWeb() {
         $('#codigo').append(cadena);
 
         $("#btnAbP").on("click", function (e) {
-            
+
             cws.abandonarPartida();
         });
     };
