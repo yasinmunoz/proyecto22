@@ -9,16 +9,16 @@ https://proyecto22-lasxmhshya-uc.a.run.app/
 
 ## Para ejecutar el proyecto
 ```bash
-$ npm run start
+npm run start
 ```
 
 ## Para ejecutar las pruebas unitarias
 ```bash
-$ npm run test
+npm run test
 ```
 
 ## Para ejecutar las pruebas end-to-end
 ```bash
-$ npm run cypress:open
+npm run cypress:open
 ```
 
