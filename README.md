@@ -2,8 +2,16 @@
 Proyecto de la asignatura de Procesos de Ingeniería del Software de las Escuela Superior de Ingeniería Informática de Albacete - Universidad de Castilla-La Mancha realizado durante el curso 22-23 
 
 ## Descripción
-Este repositorio contiene la arquitectura base de una solución software estilo SaaS (Software as a Service) de una aplicación genérica que implementa la siguiente funcionalidad:
+Este repositorio contiene la solución software SaaS (Software as a Service) del juego de hundir la flota, remasterizado en Battleship Pro.
 
-* Los usuarios inician sesión con nick (no hay clave). El nick es único
-* Los usuarios pueden crear partida (sin nombre). Las partidas son de 2 usuarios. El sistema asigna un código a la partida
-* Los usuarios puede unirse a partidas disponibles (las que tienen sólo un jugador)
+## Para jugar
+https://proyecto22-lasxmhshya-uc.a.run.app/
+
+## Para ejecutar el proyecto
+npm run start
+
+## Para ejecutar las pruebas unitarias
+npm run test
+
+## Para ejecutar las pruebas end-to-end
+npm run cypress:open
