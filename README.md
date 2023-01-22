@@ -8,10 +8,17 @@ Este repositorio contiene la solución software SaaS (Software as a Service) del
 https://proyecto22-lasxmhshya-uc.a.run.app/
 
 ## Para ejecutar el proyecto
-npm run start
+```bash
+$ npm run start
+```
 
 ## Para ejecutar las pruebas unitarias
-npm run test
+```bash
+$ npm run test
+```
 
 ## Para ejecutar las pruebas end-to-end
-npm run cypress:open
+```bash
+$ npm run cypress:open
+```
+
